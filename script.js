@@ -1,11 +1,21 @@
 // 1. MOBILE MENU TOGGLE
 const menuIcon = document.querySelector("#menu");
 const navLinks = document.querySelector("#links");
+const allLinks = document.querySelectorAll("#links a"); // Select all links inside the menu
 
+// Toggle menu on icon click
 menuIcon.onclick = () => {
     menuIcon.classList.toggle('bx-x');
     navLinks.classList.toggle('active');
 };
+
+// Close menu when a link is clicked
+allLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        menuIcon.classList.remove('bx-x');
+        navLinks.classList.remove('active');
+    });
+});
 
 // 2. REVEAL ON SCROLL (Intersection Observer)
 const observerOptions = {
