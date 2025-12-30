@@ -512,3 +512,53 @@ footer {
     color: #fff;
     transform: rotate(10deg);
 }
+
+/* RESPONSIVE & MOBILE MENU */
+@media (max-width: 992px) {
+    /* 1. Layout Adjustments */
+    .hero-content, .about-container { grid-template-columns: 1fr; flex-direction: column; text-align: center; }
+    .about-container { gap: 3rem; }
+    .about-box { order: 2; }
+    .about-image { order: 1; }
+    .footer-content { flex-direction: column; gap: 2rem; }
+
+    /* 2. HIDE the menu links by default on mobile */
+    nav ul {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 100%;
+        background: rgba(15, 15, 15, 0.95); /* Dark Glass background */
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem 0;
+        gap: 1.5rem;
+        border-bottom: 1px solid var(--glass-border);
+        /* HIDE IT HERE */
+        display: none; 
+        transition: 0.3s ease;
+    }
+
+    /* 3. SHOW the menu when JS adds the 'active' class */
+    nav ul.active {
+        display: flex;
+        animation: slideDown 0.3s ease forwards;
+    }
+    
+    /* Animation to make it slide down smoothly */
+    @keyframes slideDown {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    nav ul a {
+        font-size: 1.2rem;
+        display: block;
+    }
+}
+
+@media (max-width: 600px) {
+    .input-group, .skills-grid, .bento-grid, .projects-grid { grid-template-columns: 1fr; }
+    .bento-item, .main-service, .tall { grid-column: span 1; }
+}
